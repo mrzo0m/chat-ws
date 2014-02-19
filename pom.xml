@@ -1,0 +1,94 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>chat-ws</groupId>
+  <artifactId>chat-ws</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>chat-ws</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+      <dependency>
+          <groupId>com.sun.xml.ws</groupId>
+          <artifactId>jaxws-rt</artifactId>
+          <version>2.2.8</version>
+      </dependency>
+  </dependencies>
+    <build>
+        <finalName>beerexpert-ws-jar</finalName>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>UTF-8</encoding>
+                    <!-- https://jax-ws-commons.java.net/jaxws-maven-plugin/usage.html -->
+                    <compilerArguments>
+                        <endorseddirs>${project.build.directory}/endorsed</endorseddirs>
+                    </compilerArguments>
+                </configuration>
+            </plugin>
+
+            <!-- https://jax-ws-commons.java.net/jaxws-maven-plugin/usage.html -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.3</version>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/endorsed</outputDirectory>
+                            <silent>true</silent>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>javax.xml.bind</groupId>
+                                    <artifactId>jaxb-api</artifactId>
+                                    <version>2.2.7</version>
+                                    <type>jar</type>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>javax.xml.ws</groupId>
+                                    <artifactId>jaxws-api</artifactId>
+                                    <version>2.2.9</version>
+                                    <type>jar</type>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- https://jax-ws-commons.java.net/jaxws-maven-plugin/ -->
+            <plugin>
+                <groupId>org.jvnet.jax-ws-commons</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>2.3</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+                            <wsdlDirectory>${basedir}/src/main/resources/wsdl</wsdlDirectory>
+                            <packageName>com.epam.training</packageName>
+                            <sourceDestDir>${basedir}/target/generated-sources/main/java</sourceDestDir>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
