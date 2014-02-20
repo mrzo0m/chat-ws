@@ -4,6 +4,6 @@
         version="2.0">
     <endpoint
             name="HelloWorldWs"
-            implementation="com.epam.training.HelloWorld"
+            implementation="com.epam.training.ws.ChatWS"
             url-pattern="/"/>
 </endpoints>

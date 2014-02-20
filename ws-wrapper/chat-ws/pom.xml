@@ -23,6 +23,17 @@
             <artifactId>jaxws-rt</artifactId>
             <version>2.2.8</version>
         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4jVersion}</version>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4jVersion}</version>
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
     <build>
         <finalName>chat-ws-jar</finalName>
@@ -91,7 +102,7 @@
                             <wsdlDirectory>${basedir}/src/main/resources/wsdl</wsdlDirectory>
                             <packageName>com.epam.training</packageName>
                             <sourceDestDir>${basedir}/target/generated-sources/main/java</sourceDestDir>
-                            <sei>com.epam.training.HelloWorld</sei>
+                            <sei>com.epam.training.ws.ChatWS</sei>
                             <genWsdl>true</genWsdl>
                             <keep>true</keep>
                             <verbose>true</verbose>

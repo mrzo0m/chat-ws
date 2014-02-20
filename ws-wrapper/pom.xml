@@ -8,12 +8,15 @@
     <modules>
         <module>chat-ws</module>
         <module>chat-ws-war</module>
+        <module>chat-web-app</module>
     </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.6</java.version>
+        <slf4jVersion>1.6.1</slf4jVersion>
+        <log4jVersion>1.2.16</log4jVersion>
     </properties>
     <name>ws-wrapper Maven Webapp</name>
     <url>http://maven.apache.org</url>
