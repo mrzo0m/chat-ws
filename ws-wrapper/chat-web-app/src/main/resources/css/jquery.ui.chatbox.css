@@ -1,0 +1,196 @@
+/* style sheets */
+.ui-chatbox {
+    position: fixed;
+    bottom:0;
+    padding: 2px;
+    background:  #CCCCCC;
+}
+
+.ui-chatbox-titlebar {
+    padding: 3px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.ui-chatbox-content {
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+}
+
+.ui-chatbox-log {
+    padding: 3px;
+    height: 250px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: #FFFFFF;
+}
+
+.ui-chatbox-input {
+    padding: 3px;
+    border-top: 1px solid grey;
+    overflow: hidden;
+}
+
+.ui-chatbox-input-box {
+    margin: 5px;
+    border: 2px solid lightgrey;/* #6699FF */
+    padding: 2px;
+    height: 50px;
+}
+
+.ui-chatbox-icon {
+    float: right;
+}
+
+.ui-chatbox-input-focus {
+    border-color: #6699FF;
+}
+
+.ui-chatbox-msg {
+    margin-top: 10px;
+    float: left;
+    clear: both;
+    /* Source: http://snipplr.com/view/10979/css-cross-browser-word-wrap */
+    white-space: pre-wrap;      /* CSS3 */
+    white-space: -moz-pre-wrap; /* Firefox */
+    white-space: -pre-wrap;     /* Opera <7 */
+    white-space: -o-pre-wrap;   /* Opera 7 */
+    word-wrap: break-word;      /* IE */
+}
+
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,900);
+@import url(http://weloveiconfonts.com/api/?family=entypo);
+[class*="entypo-"]:before {
+    font-family: 'entypo', sans-serif;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+body {
+    background: #BDC1C6;
+    font-family: 'Roboto';
+}
+p {
+    font-weight: 300;
+}
+.online {
+    float: left;
+    width: 400px;
+    background: #fff;
+    margin: 0 auto;
+}
+
+.chat {
+    width: 400px;
+    background: #fff;
+    margin: 0 auto;
+}
+header {
+    background: #35323C;
+    height: 50px;
+    padding: 5px 10px;
+}
+.menu-icon {
+    background: #2F2E33;
+    padding: 5px 10px;
+    float: left;
+    font-size: 3em;
+    line-height: 0.5em;
+    color: #fff;
+    border-radius: 3px;
+}
+.menu-icon:hover {
+    background: #39caad;
+    cursor: pointer;
+}
+h1 {
+    float: right;
+    color: #fff;
+    margin: 5px;
+    font-weight: 300;
+    font-size: 1.3em;
+}
+.new {
+    background: rgb(57, 202, 173);
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+.new:hover {
+    cursor: pointer;
+    background: rgba(57, 202, 173, 0.9);
+}
+.userlist {
+    padding: 10px;
+}
+
+.users{
+    float: left;
+
+}
+
+.user {
+    float: right;
+    width: 100%;
+    margin: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+
+.userNick {
+    color: #1c94c4;
+    font-weight: bold;
+}
+.timeValue {
+    color: #c41a10;
+}
+
+.messages {
+    padding: 10px;
+}
+.message {
+    float: left;
+    width: 100%;
+    margin: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+.message p {
+    font-size: 0.8em;
+    width: 90%;
+    margin: 5px 0;
+}
+img {
+    border-radius: 100%;
+    float: left;
+    margin: 0 10px 15px 0;
+}
+p.time {
+    color: rgba(0,0,0,0.5);
+    font-weight: 400;
+}
+h2 {
+    font-size: 1em;
+    font-weight: 400;
+}
+h2:after {
+    content: '';
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    background: #39caad;
+    border-radius: 100%;
+    margin-left: 5px;
+}
+footer {
+    width: 100%;
+    background: #fff;
+    padding: 10px;
+    text-align: center;
+    font-size: 0.8em;
+}
+footer p:before,
+footer p:after {
+    content: ' - ';
+}

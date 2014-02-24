@@ -27,7 +27,8 @@ public class UserStore {
     public boolean add(String nick) {
         boolean result = false;
         if (isUniqueNick(nick)) {
-            User user = new User(nick);
+            User user = new User();
+            user.setNick(nick);
             online.add(user);
             result = true;
         }
@@ -35,7 +36,8 @@ public class UserStore {
     }
 
     public void remove(String nick){
-        User userForRemove = new User(nick);
+        User userForRemove = new User();
+        userForRemove.setNick(nick);
         Iterator<User> iter = online.iterator();
         while (iter.hasNext()){
             if(iter.next().equals(userForRemove))

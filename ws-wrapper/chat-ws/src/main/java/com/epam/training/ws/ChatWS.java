@@ -10,12 +10,13 @@ import org.slf4j.LoggerFactory;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
+import javax.xml.ws.Holder;
 import java.util.List;
 
 /**
  * Created by Oleg_Burshinov on 20.02.14.
  */
-@WebService
+@WebService(serviceName = "ChatWS", portName = "ChatWSPort", name = "ChatWSService")
 public class ChatWS {
     private static final Logger logger = LoggerFactory.getLogger(ChatWS.class);
 
@@ -44,19 +45,21 @@ public class ChatWS {
         userStore.remove(name);
     }
 
+
     @WebMethod(operationName = "getOnlineUsers", action = "online")
-    public List<User> online() {
+    public void online(@WebParam(name = "user", mode = WebParam.Mode.OUT) Holder<List<User>> user) {
         logger.debug("check online user list");
-        return userStore.getOnline();
+        user.value = userStore.getOnline();
     }
 
-    @WebMethod(operationName = "postMessage", action = "message")
-    public boolean message(@WebParam(name = "nick") String nick, @WebParam(name = "messageBody") String messageBody) {
-        return messageStore.add(nick, messageBody);
+    @WebMethod(operationName = "postMessage", action = "postMessage")
+    public boolean postMessage(@WebParam(name = "usernick") String usernick, @WebParam(name = "messageBody") String messageBody) {
+        return messageStore.add(usernick, messageBody);
     }
 
     @WebMethod(operationName = "getMessagesAfterN", action = "getMessagesAfterN")
-    public List<Message> getMessagesAfterN(@WebParam(name = "lastMsgid") int lastMsgid) {
-        return messageStore.getMessagesAfterN(lastMsgid);
+    public void getMessagesAfterN(@WebParam(name = "lastUpdatedMsgid") int lastUpdatedMsgid, @WebParam(name = "usermessage", mode = WebParam.Mode.OUT) Holder<List<Message>> usermessage, @WebParam(name = "lastId", mode = WebParam.Mode.OUT) Holder<Integer> lastId) {
+        usermessage.value = messageStore.getMessagesAfterN(lastUpdatedMsgid);
+        lastId.value = (lastUpdatedMsgid + usermessage.value.size());
     }
 }

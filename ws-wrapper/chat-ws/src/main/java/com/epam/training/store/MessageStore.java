@@ -18,7 +18,8 @@ public class MessageStore {
 
     public boolean add(String nick, String messageBody) {
         Message message = new Message();
-        User user = new User(nick);
+        User user = new User();
+        user.setNick(nick);
         message.setUser(user);
         message.setText(messageBody);
         message.setTime(Calendar.getInstance());
@@ -31,9 +32,9 @@ public class MessageStore {
     //TODO remove method
 
     public List<Message> getMessagesAfterN(int n) {
-        if (n <= chatLog.size() && n > 0) {
-            return new ArrayList<Message>(chatLog.subList((n + 1), chatLog.size()));
+        if (n <= chatLog.size() && n >= 0) {
+            return new ArrayList<Message>(chatLog.subList(n, chatLog.size()));
         }
-        return null;
+        return new ArrayList<Message>();
     }
 }

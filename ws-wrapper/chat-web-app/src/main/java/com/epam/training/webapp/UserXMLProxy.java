@@ -1,4 +1,4 @@
-package com.epam.training.store.pojo;
+package com.epam.training.webapp;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -8,11 +8,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 /**
  * Created by Oleg_Burshinov on 20.02.14.
  */
-@XmlRootElement(name = "user", namespace = "http://ws.training.epam.com/")
+@XmlRootElement(name = "user")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class User {
+public class UserXMLProxy {
 
-    public User() {
+    public UserXMLProxy() {
         super();
     }
 
@@ -32,7 +32,7 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        User user = (User) o;
+        UserXMLProxy user = (UserXMLProxy) o;
 
         if (!nick.equals(user.nick)) return false;
 

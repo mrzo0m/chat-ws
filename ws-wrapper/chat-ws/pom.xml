@@ -85,31 +85,114 @@
                 </executions>
             </plugin>
 
+            <plugin>
+                <groupId>org.jvnet.jaxb2.maven2</groupId>
+                <artifactId>maven-jaxb2-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <schemaDirectory>${project.parent.basedir}/chat-ws/target/generated-sources/wsdl</schemaDirectory>
+                    <generateDirectory>${basedir}/target/generated-sources/xjc</generateDirectory>
+                </configuration>
+            </plugin>
+
             <!-- https://jax-ws-commons.java.net/jaxws-maven-plugin/ -->
             <plugin>
                 <groupId>org.jvnet.jax-ws-commons</groupId>
                 <artifactId>jaxws-maven-plugin</artifactId>
                 <version>2.3</version>
                 <executions>
+                    <!--<execution>-->
+                        <!--<id>generate-wsdl</id>-->
+                        <!--<phase>process-classes</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>wsgen</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<sourceDestDir>${basedir}/target/generated-sources/main/java</sourceDestDir>-->
+                            <!--<sei>com.epam.training.ws.ChatWS</sei>-->
+                            <!--<genWsdl>true</genWsdl>-->
+                            <!--<keep>true</keep>-->
+                            <!--<verbose>true</verbose>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                    <!--<execution>-->
+                        <!--<id>generate-seclitos</id>-->
+                        <!--<phase>process-classes</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>wsimport</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<wsdlDirectory>${basedir}/src/main/resources/wsdl</wsdlDirectory>-->
+                            <!--<packageName>com.epam.training</packageName>-->
+                            <!--<sourceDestDir>${basedir}/target/generated-sources/main/java</sourceDestDir>-->
+                            <!--<keep>true</keep>-->
+                            <!--<verbose>true</verbose>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
                     <execution>
                         <id>generate-wsdl</id>
                         <phase>process-classes</phase>
                         <goals>
                             <goal>wsgen</goal>
-                            <goal>wsimport</goal>
                         </goals>
                         <configuration>
-                            <wsdlDirectory>${basedir}/src/main/resources/wsdl</wsdlDirectory>
-                            <packageName>com.epam.training</packageName>
-                            <sourceDestDir>${basedir}/target/generated-sources/main/java</sourceDestDir>
                             <sei>com.epam.training.ws.ChatWS</sei>
                             <genWsdl>true</genWsdl>
-                            <keep>true</keep>
-                            <verbose>true</verbose>
                         </configuration>
                     </execution>
+                    <!--<execution>-->
+                        <!--<id>generate-stubs</id>-->
+                        <!--<phase>process-classes</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>wsimport</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<wsdlDirectory>${basedir}/target/generated-sources/wsdl</wsdlDirectory>-->
+                            <!--<wsdlFiles>-->
+                                <!--<wsdlFile>&lt;!&ndash; class name goes here &ndash;&gt;ChatWS.wsdl</wsdlFile>-->
+                            <!--</wsdlFiles>-->
+                            <!--&lt;!&ndash; *** you need the next line to set the wsdlLocation in the generated stubs *** &ndash;&gt;-->
+                            <!--<wsdlLocation>http://localhost:8080/chat-ws-war/</wsdlLocation>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
                 </executions>
+                <!--<configuration>-->
+                    <!--<target>2.1</target>-->
+                    <!--<xjcArgs>-->
+                        <!--<xjcArg>-XautoNameResolution</xjcArg>-->
+                    <!--</xjcArgs>-->
+                    <!--<bindingDirectory>src/jaxws</bindingDirectory>-->
+                    <!--<keep>true</keep>-->
+                    <!--<wsdlDirectory>src/jaxws/wsdl</wsdlDirectory>-->
+                    <!--&lt;!&ndash; packageName has been removed from here &ndash;&gt;-->
+                <!--</configuration>-->
+
             </plugin>
+
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-jar-plugin</artifactId>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>package-wsclient-jars</id>-->
+                        <!--<phase>package</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>jar</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<classesDirectory>target/jaxws/&lt;!&ndash; rest of the path here, can't remember it right now &ndash;&gt;</classesDirectory>-->
+                            <!--<classifier>wsclient</classifier>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
+
         </plugins>
     </build>
 </project>

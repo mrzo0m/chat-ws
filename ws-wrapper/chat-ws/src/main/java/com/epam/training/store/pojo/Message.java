@@ -1,10 +1,13 @@
 package com.epam.training.store.pojo;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Calendar;
 
 /**
  * Created by Oleg_Burshinov on 20.02.14.
  */
+//@XmlRootElement(name = "message", namespace = "http://ws.training.epam.com/")
 public class Message {
 
     private User user;
@@ -14,11 +17,7 @@ public class Message {
     public Message() {
     }
 
-    public Message(User user, String text, Calendar time) {
-        this.user = user;
-        this.text = text;
-        this.time = time;
-    }
+
 
     public User getUser() {
         return user;
