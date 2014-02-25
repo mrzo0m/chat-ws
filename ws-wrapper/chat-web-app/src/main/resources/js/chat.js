@@ -19,6 +19,7 @@ $(document).ready(function () {
         user: {key: "value"},
         title: "test chat",
         messageSent: function (id, user, text) {
+            text.replace(/</g, "&lt;").replace(new RegExp(">",'g'),"&gt;");
             var message = {message: {
                 user: {
                     nick: $.cookie("login")
@@ -48,6 +49,7 @@ $(document).ready(function () {
                 user: {key: "value"},
                 title: "test chat",
                 messageSent: function (id, user, text) {
+                    text.replace(/</g, "&lt;").replace(new RegExp(">",'g'),"&gt;");
                     var message = {message: {
                         user: {
                             nick: $.cookie("login")
