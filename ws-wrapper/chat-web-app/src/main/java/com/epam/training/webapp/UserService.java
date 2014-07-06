@@ -1,18 +1,5 @@
 package com.epam.training.webapp;
 
-import com.epam.training.ws.ChatWS;
-import com.epam.training.ws.ChatWSService;
-import com.epam.training.ws.User;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.*;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.UriInfo;
-import javax.xml.ws.Response;
-import javax.xml.ws.WebServiceRef;
-import java.net.URI;
-import java.util.List;
-
 /**
  * Created by mr.zoom on 22.02.14.
  */

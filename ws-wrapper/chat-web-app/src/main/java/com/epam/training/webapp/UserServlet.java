@@ -2,25 +2,20 @@ package com.epam.training.webapp;
 
 import com.epam.training.ws.ChatWS;
 import com.epam.training.ws.ChatWSService;
-import com.epam.training.ws.GetOnlineUsersResponse;
 import com.epam.training.ws.User;
-import com.sun.xml.ws.spi.db.JAXBWrapperAccessor;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import javax.xml.bind.*;
-import javax.xml.bind.util.JAXBSource;
-import javax.xml.namespace.QName;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.ws.WebServiceRef;
-import javax.xml.ws.soap.Addressing;
+import java.io.*;
+import java.util.List;
 
 /**
  * Created by mr.zoom on 22.02.14.
@@ -28,7 +23,7 @@ import javax.xml.ws.soap.Addressing;
 @WebServlet("/pages/users")
 public class UserServlet extends HttpServlet {
 
-    @WebServiceRef(wsdlLocation = "http://localhost:8080/chat-ws-war/?wsdl")
+    @WebServiceRef(wsdlLocation = "http://localhost:8087/chat-ws-war/?wsdl")
     private ChatWS service;
 
     @Override

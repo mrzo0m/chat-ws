@@ -18,7 +18,6 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.ws.Holder;
 import javax.xml.ws.WebServiceRef;
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -28,7 +27,7 @@ import java.util.List;
 @WebServlet("/pages/message")
 public class MessageServlet  extends HttpServlet {
 
-    @WebServiceRef(wsdlLocation = "http://localhost:8080/chat-ws-war/?wsdl")
+    @WebServiceRef(wsdlLocation = "http://localhost:8087/chat-ws-war/?wsdl")
     private ChatWS service;
 
     @Override
