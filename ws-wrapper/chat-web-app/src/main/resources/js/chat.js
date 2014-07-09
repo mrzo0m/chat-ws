@@ -9,31 +9,24 @@ $(document).ready(function () {
     var lastShowingMessageId = 0;
     updateUsers();
     updateMessages();
+
+
+
+    var box = openMessageBox();
+
     setInterval(function(){
         updateUsers();
     }, 5000);
     setInterval(function(){
         updateMessages();
     }, 3000);
-    var box = $("#chat_div").chatbox({id: "chat_div",
-        user: {key: "value"},
-        title: "test chat",
-        messageSent: function (id, user, text) {
-            var message = {message: {
-                user: {
-                    nick: $.cookie("login")
-                },
-                text: text,
-                time: ""
-            }};
-            var e = json2xml.convert(message);
-            $.post('message', e, function (xml) {
-                updateMessages();
-            });
 
+    var login = $.cookie("login");
+    if(!login){
+        alert("Start chat from login page");
+        window.location = "login.htm";
+    }
 
-            var html = Mustache.to_html(template, message);
-        }});
     $("#toggle").click(function (event, ui) {
         var login = $.cookie("login");
         if(!login){
@@ -44,25 +37,7 @@ $(document).ready(function () {
             box.chatbox("option", "boxManager").toggleBox();
         }
         else {
-            box = $("#chat_div").chatbox({id: "chat_div",
-                user: {key: "value"},
-                title: "test chat",
-                messageSent: function (id, user, text) {
-                    var message = {message: {
-                        user: {
-                            nick: $.cookie("login")
-                        },
-                        text: text,
-                        time: ""
-                    }};
-                    var e = json2xml.convert(message);
-                    $.post('message', e, function (xml) {
-                        updateMessages();
-                    });
-
-
-                    var html = Mustache.to_html(template, message);
-                }});
+            box = openMessageBox();
         }
     });
     $("#logout").click(function() {
@@ -84,6 +59,30 @@ $(document).ready(function () {
     $("#updateUsers").click(function () {
         updateUsers();
     });
+
+    function openMessageBox() {
+        return $("#chat_div").chatbox({id: "chat_div",
+            user: {key: "value"},
+            title: "test chat",
+            messageSent: function (id, user, text) {
+                text = text.replace(/</g, "&lt;");
+                text = text.replace(new RegExp(">",'g'),"&gt;");
+                var message = {message: {
+                    user: {
+                        nick: $.cookie("login")
+                    },
+                    text: text,
+                    time: ""
+                }};
+                var e = json2xml.convert(message);
+                $.post('message', e, function (xml) {
+                    updateMessages();
+                });
+
+
+                var html = Mustache.to_html(template, message);
+            }});
+    }
 
     function updateUsers() {
         $.ajax({
