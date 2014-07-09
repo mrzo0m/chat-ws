@@ -3,7 +3,7 @@
     <parent>
         <artifactId>ws-wrapper</artifactId>
         <groupId>ws-wrapper</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>chat-web-app</artifactId>
@@ -37,8 +37,25 @@
             <artifactId>jsr311-api</artifactId>
             <version>1.1.1</version>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.8.1</version>
+            <scope>test</scope>
+        </dependency>
 
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>6.0</version>
+            <scope>provided</scope>
+        </dependency>
 
+        <dependency>
+            <artifactId>chat-ejbs</artifactId>
+            <groupId>ws-wrapper</groupId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>chat-web-app</finalName>
@@ -57,7 +74,6 @@
                     </webResources>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.jvnet.jax-ws-commons</groupId>
                 <artifactId>jaxws-maven-plugin</artifactId>
@@ -77,7 +93,8 @@
                                 <wsdlFile><!-- class name goes here -->ChatWS.wsdl</wsdlFile>
                             </wsdlFiles>
                             <!-- *** you need the next line to set the wsdlLocation in the generated stubs *** -->
-                            <wsdlLocation>http://localhost:8080/chat-ws-war/</wsdlLocation>
+                            <!--<wsdlLocation>http://localhost:8087/chat-ws-war/</wsdlLocation>-->
+                            <wsdlLocation>${project.parent.basedir}/chat-ws/target/generated-sources/wsdl</wsdlLocation>
                         </configuration>
                     </execution>
                 </executions>

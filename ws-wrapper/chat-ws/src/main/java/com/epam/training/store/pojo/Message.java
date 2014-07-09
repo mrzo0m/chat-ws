@@ -1,7 +1,5 @@
 package com.epam.training.store.pojo;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Calendar;
 
 /**
