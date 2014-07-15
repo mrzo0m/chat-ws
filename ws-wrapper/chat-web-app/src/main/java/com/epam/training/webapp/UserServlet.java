@@ -5,6 +5,8 @@ import com.epam.training.ws.ChatWSService;
 import com.epam.training.ws.User;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.HttpConstraint;
+import javax.servlet.annotation.ServletSecurity;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -131,6 +133,7 @@ public class UserServlet extends HttpServlet {
             StringReader reader = new StringReader(xmlString);
             UserXMLProxy user = (UserXMLProxy) jaxbUnmarshaller.unmarshal(reader);
             port.logoff(user.getNick());
+            req.logout();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

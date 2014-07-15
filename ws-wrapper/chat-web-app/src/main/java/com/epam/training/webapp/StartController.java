@@ -15,7 +15,7 @@ import java.io.IOException;
  * Created by Oleg_Burshinov on 24.02.14.
  */
 @WebServlet("/calcultaor")
-public class StartController extends HttpServlet{
+public class StartController extends HttpServlet {
 
     private CalculatorLocal calculator;
 
@@ -23,25 +23,23 @@ public class StartController extends HttpServlet{
      * Injecting the EJB
      */
     @EJB(name = "calculator")
-    public void setCalculator(CalculatorLocal calculator)
-    {
+    public void setCalculator(CalculatorLocal calculator) {
         this.calculator = calculator;
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher  dispatcher = null;
-        String path =req.getPathInfo();
-        calculator.add(1,1);
-
-        if(path == null){
+        RequestDispatcher dispatcher = null;
+        String path = req.getPathInfo();
+        calculator.add(1, 1);
+        if (path == null) {
             throw new ServletException("Missing parameter : go");
-        } else if(path.equals("/ejb") || path.equals("/ejb.htm") || path.equals("/login.html")){
+        } else if (path.equals("/ejb") || path.equals("/ejb.htm") || path.equals("/login.html")) {
 
             dispatcher = req.getRequestDispatcher("/WEB-INF/pages/login.jsp");
         }
 
-        if(dispatcher!= null){
+        if (dispatcher != null) {
             dispatcher.forward(req, resp);
         } else {
             throw new ServletException("Controller null dispatcher");
