@@ -1,4 +1,5 @@
 package com.epam.training.webapp;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import javax.naming.Context;
@@ -10,6 +11,7 @@ import java.util.jar.Attributes;
 /**
  * Created by mr.zoom on 06.07.14.
  */
+@Ignore
 public class LdapTest {
 
     @Test
