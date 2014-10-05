@@ -25,8 +25,8 @@ public class TestStoreIT {
         MessageStore messageStore = new MessageStore();
         messageStore.add(nick, messageBody);
         List<Message> messages = messageStore.getMessagesAfterN(0);
-        Message message = messages.get(1);
-        assertNotNull(message);
+        Message message = messages.get(0);
+        assertNotNull(null);
         expected.setTime(message.getTime());
         assertEquals(expected, message);
     }
