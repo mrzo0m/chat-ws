@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by mr.zoom on 05.10.14.
  */
-public class TestStoreIT {
+public class ITMessageStore {
 
     @Test
     public void testAddStringMessageToStore(){
