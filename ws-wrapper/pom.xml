@@ -54,20 +54,6 @@
                             <encoding>UTF-8</encoding>
                         </configuration>
                     </plugin>
-                    <!--
-                    <plugin>
-                        <groupId>com.epam.training.maven.outputbuildinfo</groupId>
-                        <artifactId>outputbuildinfo</artifactId>
-                        <version>1.0</version>
-                        <executions>
-                            <execution>
-                                <phase>compile</phase>
-                                <goals>
-                                    <goal>touch</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin> -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-failsafe-plugin</artifactId>
@@ -161,20 +147,6 @@
                             <encoding>UTF-8</encoding>
                         </configuration>
                     </plugin>
-                    <!--
-                    <plugin>
-                        <groupId>com.epam.training.maven.outputbuildinfo</groupId>
-                        <artifactId>outputbuildinfo</artifactId>
-                        <version>1.0</version>
-                        <executions>
-                            <execution>
-                                <phase>compile</phase>
-                                <goals>
-                                    <goal>touch</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin> -->
                 </plugins>
             </build>
         </profile>
