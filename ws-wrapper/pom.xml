@@ -5,11 +5,6 @@
     <artifactId>ws-wrapper</artifactId>
     <packaging>pom</packaging>
     <version>1.0</version>
-    <!--<modules>-->
-    <!--<module>chat-ws</module>-->
-    <!--<module>chat-ws-war</module>-->
-    <!--<module>chat-web-app</module>-->
-    <!--</modules>-->
 
     <profiles>
         <profile>
