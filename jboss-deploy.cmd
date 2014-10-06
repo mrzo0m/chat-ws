@@ -15,17 +15,17 @@ goto JBOSS
 
 :JBOSS
 SET  current_build=chat-ws-war%number%
-CALL set tmp=%%current_build:~0,-1%%
+CALL set tmp=%%current_build:~0,%-2%%
 ECHO "%tmp%"
 set "old_build=%tmp%%i%.war"
 SET  current_build=%current_build%.war
 ECHO "UNDEPLOY: %old_build%"
 CALL %JBOSS_HOME%\bin\jboss-cli.bat --connect "undeploy %old_build%,quit"
 ECHO "DEPLOY: %current_build%"
-CALL %JBOSS_HOME%\bin\jboss-cli.bat --connect "deploy %root%\ws-wrapper\chat-ws-war\target\%current_build%,quit"
+CALL %JBOSS_HOME%\bin\jboss-cli.bat --connect "deploy %root%\ws-wrapper\chat-ws-war\target\%current_build%,quit" )
 
 
-goto EXIT
+goto EXIT 
 
 
 :EXIT
