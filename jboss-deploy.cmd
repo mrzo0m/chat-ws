@@ -15,7 +15,7 @@ goto JBOSS
 
 :JBOSS
 SET  current_build=chat-ws-war%number%
-CALL set tmp=%%current_build:~0,-2%%
+CALL set tmp=%%current_build:~0,-1%%
 ECHO "%tmp%"
 set "old_build=%tmp%%i%.war"
 SET  current_build=%current_build%.war
