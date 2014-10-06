@@ -4,8 +4,8 @@ set counter=%1
 set number=%2
 set root=%CD%
 ECHO "build.counter %counter% env.BUILD_NUMBER: %number%"
-#cd ws-wrapper\chat-ws-war\target\
-#ren *.war *-%number%.war
+cd ws-wrapper\chat-ws-war\target\
+ren chat-ws-war.war chat-ws-war%number%.war
 set /a "i = 1"
 set /a "i = %counter% - 1"
 if !i! lss 0 (ECHO "ERROR"
@@ -14,16 +14,19 @@ goto JBOSS
 )
 
 :JBOSS
-SET  current_build=chat-ws-war-%number%
+SET  current_build=chat-ws-war%number%
 CALL set tmp=%%current_build:~0,-1%%
 ECHO "%tmp%"
 set "old_build=%tmp%%i%.war"
+SET  current_build=%current_build%.war
 ECHO "UNDEPLOY: %old_build%"
+start /b %JBOSS_HOME%\bin\jboss-cli.bat --connect "undeploy %old_build%,quit"
+ECHO "DEPLOY: %current_build%"
+start /b %JBOSS_HOME%\bin\jboss-cli.bat --connect "deploy %root%\ws-wrapper\chat-ws-war\target\%current_build%,quit"
 
 
-ECHO "I: %i%"
 goto EXIT
-chat-ws-war.war
+
 
 :EXIT
 exit /b 0
